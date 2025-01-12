@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Login and Sign-Up Form with Balloons</title>
+
+                   <!----  STYLE.CSS  ---->
+
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0f7fa, #ffecb3);
+      perspective: 1200px;
+    }
+
+    .container {
+      display: flex;
+      gap: 20px;
+      transform-style: preserve-3d;
+    }
+
+    .form-card {
+      position: relative;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      max-width: 320px;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+
+    @keyframes floatCard {
+      0%, 100% {
+        transform: translateY(0) rotateY(0);
+      }
+      50% {
+        transform: translateY(-20px) rotateY(20deg);
+      }
+    }
+
+    .form-card .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffb74d;
+      clip-path: polygon(0 0, 0 100%, 50% 80%, 100% 100%, 100% 0);
+      z-index: -1;
+      
+    }
+
+    .form-card h2 {
+      font-size: 1.8em;
+      color: #444;
+      margin-bottom: 20px;
+      transform: translateZ(50px);
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      transform: translateZ(30px);
+    }
+
+    .input-group .icon {
+      margin-right: 10px;
+      color: #ffb74d;
+    }
+
+    .input-group input {
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9em;
+      color: #888;
+      margin-bottom: 20px;
+      transform: translateZ(20px);
+    }
+
+    .options a {
+      color: #ffab40;
+      text-decoration: none;
+    }
+
+    .options label {
+      cursor: pointer;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff6f00;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      transform: translateZ(40px);
+    }
+
+    button:hover {
+      background-color: #ff8f00;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #888;
+      transform: translateZ(10px);
+    }
+
+    p a {
+      color: #ff6f00;
+      text-decoration: none;
+    }
+
+    /* Balloon Design */
+    .balloon-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+    }
+
+    .balloon {
+      position: absolute;
+      border-radius: 50%;
+      background-color: #ff6f00;
+      width: 20px;
+      height: 20px;
+      animation: gentleFloat 5s ease-in-out infinite;
+      transform-style: preserve-3d;
+    }
+
+    .balloon:nth-child(2) {
+      background-color: #ffab40;
+      width: 25px;
+      height: 25px;
+      left: 30px;
+      top: 15px;
+      animation-duration: 4.5s;
+    }
+
+    .balloon:nth-child(3) {
+      background-color: #ffca28;
+      width: 15px;
+      height: 15px;
+      left: 10px;
+      top: 50px;
+      animation-duration: 4s;
+    }
+
+    .balloon:nth-child(4) {
+      background-color: #ff8f00;
+      width: 18px;
+      height: 18px;
+      right: 20px;
+      top: 25px;
+      animation-duration: 5.5s;
+    }
+
+    .balloon:nth-child(5) {
+      background-color: #ffe082;
+      width: 22px;
+      height: 22px;
+      right: 40px;
+      top: 10px;
+      animation-duration: 6s;
+    }
+
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px) rotateZ(2deg);
+      }
+    }
+  </style>
+
+                 <!----- HTML ----->
+
+
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div class="form-card">
+      <div class="balloon-container">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+      </div>
+      <div class="wave"></div>
+      <h2>Login</h2>
+      <form>
+        <div class="input-group">
+          <i class="icon">&#x2709;</i>
+          <input type="email" placeholder="Email">
+        </div>
+        <div class="input-group">
+          <i class="icon">&#x1F512;</i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div class="options">
+          <label>
+            <input type="checkbox">
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit">LOGIN</button>
+        <p>Don’t have an account? <a href="#">Sign Up</a></p>
+      </form>
+    </div>
+
+    <!-- Sign-Up Form -->
+    <div class="form-card">
+      <div class="balloon-container">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+      </div>
+      <div class="wave"></div>
+      <h2>Create an Account</h2>
+      <form>
+        <div class="input-group">
+          <i class="icon">&#x1F464;</i>
+          <input type="text" placeholder="Name">
+        </div>
+        <div class="input-group">
+          <i class="icon">&#x2709;</i>
+          <input type="email" placeholder="Email">
+        </div>
+        <div class="input-group">
+          <i class="icon">&#x1F512;</i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div class="input-group">
+          <i class="icon">&#x1F512;</i>
+          <input type="password" placeholder="Confirm Password">
+        </div>
+        <div class="options">
+          <label>
+            <input type="checkbox">
+            Remember me
+          </label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit">SIGN UP</button>
+        <p>Already have an account? <a href="#">Login</a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
